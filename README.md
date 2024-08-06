@@ -12,7 +12,7 @@ The solution consists of the following projects:
 - **DutyService**: ASP.NET Core Web API project for managing tasks.
 - **UserService**: ASP.NET Core Web API project for managing users.
 - **NotificationService**: ASP.NET Core Web API project for managing notifications.
-- **TaskDAL**: Class Library project for data access logic.
+- **SharedDAL**: Class Library project for data access logic.
 
 ## Getting Started
 

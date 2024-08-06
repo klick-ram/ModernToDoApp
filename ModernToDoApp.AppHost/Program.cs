@@ -1,5 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
-builder.AddProject<Projects.ModernToDoApp>(name: "webapp");
-builder.AddProject<Projects.TaskService>(name: "taskservice");
-builder.AddProject<Projects.UserService>(name: "userservice");
+builder.AddProject<Projects.ModernToDoApp>(name: "Web-App");
+builder.AddProject<Projects.TaskService>(name: "Task-Service");
+builder.AddProject<Projects.UserService>(name: "User-Service");
+builder.AddProject<Projects.NotificationService>(name: "Notification-Service");
 builder.Build().Run();

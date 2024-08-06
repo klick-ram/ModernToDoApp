@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ModernToDoApp\ModernToDoApp.csproj" />
     <ProjectReference Include="..\TaskService\TaskService.csproj" />
+    <ProjectReference Include="..\UserService\UserService.csproj" />
   </ItemGroup>
 
 </Project>

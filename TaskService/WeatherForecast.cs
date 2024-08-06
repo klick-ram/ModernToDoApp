@@ -1,4 +1,4 @@
-namespace TaskService
+namespace UserTaskService
 {
     public class WeatherForecast
     {

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -16,7 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ModernToDoApp\ModernToDoApp.csproj" />
     <ProjectReference Include="..\NotificationService\NotificationService.csproj" />
-    <ProjectReference Include="..\TaskService\TaskService.csproj" />
+    <ProjectReference Include="..\TaskService\UserTaskService.csproj" />
     <ProjectReference Include="..\UserService\UserService.csproj" />
   </ItemGroup>
 

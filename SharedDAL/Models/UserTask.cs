@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedDAL.Models
 {
-    public class ProjectTask
+    public class UserTask
     {
         public int Id { get; set; }
         public string Title { get; set; }

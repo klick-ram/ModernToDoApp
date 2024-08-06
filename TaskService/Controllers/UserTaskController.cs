@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TaskService.Controllers
+namespace UserTaskService.Controllers
 {
-    public class TaskController : Controller
+    public class UserTaskController : Controller
     {
         public IActionResult Index()
         {

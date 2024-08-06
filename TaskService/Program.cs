@@ -1,5 +1,5 @@
-
-namespace TaskService
+using SharedDAL.Repositories;
+namespace UserTaskService
 {
     public class Program
     {
@@ -10,10 +10,10 @@ namespace TaskService
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddScoped<IUserTaskRepository, IUserTaskRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

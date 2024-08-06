@@ -9,6 +9,16 @@ namespace UserService
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder
+                    .AllowAnyOrigin()
+                        //.WithOrigins("https://localhost:60216") // Blazor app URL
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+
             // Add services to the container.
             builder.Services.AddScoped<IUserRepository, UserRepository>();
 
@@ -27,7 +37,7 @@ namespace UserService
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("AllowAllOrigins");
             app.UseAuthorization();
 
 

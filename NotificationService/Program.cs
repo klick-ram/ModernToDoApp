@@ -1,4 +1,6 @@
 
+using SharedDAL.Repositories;
+
 namespace NotificationService
 {
     public class Program
@@ -13,6 +15,7 @@ namespace NotificationService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
             var app = builder.Build();
 

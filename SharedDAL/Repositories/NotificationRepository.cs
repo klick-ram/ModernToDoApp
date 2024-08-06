@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SharedDAL.Repositories
 {
-    public class NotificationRepository
+    public class NotificationRepository : INotificationRepository
     {
         private readonly List<Notification> _notifications = new List<Notification>();
 

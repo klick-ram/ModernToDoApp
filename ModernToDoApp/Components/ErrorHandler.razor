@@ -1,0 +1,12 @@
+﻿@inject NavigationManager Navigation
+
+@code {
+    [Parameter]
+    public Exception Error { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        // Redirect to the error page with the error message
+        Navigation.NavigateTo($"/error?message={Uri.EscapeDataString(Error.Message)}");
+    }
+}

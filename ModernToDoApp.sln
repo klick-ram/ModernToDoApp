@@ -5,17 +5,17 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernToDoApp", "ModernToDoApp\ModernToDoApp.csproj", "{544F833E-C928-47F7-A125-620B6D99B5A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernToDoApp.AppHost", "ModernToDoApp.AppHost\ModernToDoApp.AppHost.csproj", "{8653FE6B-A559-46D7-A821-A4DF80948002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernToDoApp.AppHost", "ModernToDoApp.AppHost\ModernToDoApp.AppHost.csproj", "{8653FE6B-A559-46D7-A821-A4DF80948002}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernToDoApp.ServiceDefaults", "ModernToDoApp.ServiceDefaults\ModernToDoApp.ServiceDefaults.csproj", "{E5E93B0A-FB30-4CA9-B3D6-1D96BFB5A897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DutyService", "TaskService\DutyService.csproj", "{5CD39E8C-869C-4B68-9B64-827A0683DA4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DutyService", "TaskService\DutyService.csproj", "{5CD39E8C-869C-4B68-9B64-827A0683DA4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{5CDF091D-2CCC-42D0-B2DB-02D78E3B6897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\UserService.csproj", "{5CDF091D-2CCC-42D0-B2DB-02D78E3B6897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{70A5DB45-BDE0-41A3-B7C7-A5466CB7AA4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "NotificationService\NotificationService.csproj", "{70A5DB45-BDE0-41A3-B7C7-A5466CB7AA4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDAL", "SharedDAL\SharedDAL.csproj", "{FBFE9D5C-F1E6-4A25-AE78-BC62350D42A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedDAL", "SharedDAL\SharedDAL.csproj", "{FBFE9D5C-F1E6-4A25-AE78-BC62350D42A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

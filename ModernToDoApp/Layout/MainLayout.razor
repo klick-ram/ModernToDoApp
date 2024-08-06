@@ -10,7 +10,20 @@
         </div>
 
         <article class="content px-4">
-            @Body
+            <ErrorBoundary>
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent>
+                    <ErrorHandler />
+                </ErrorContent>
+            </ErrorBoundary>
         </article>
     </main>
 </div>
+@code {
+    private void OnError(Exception ex)
+    {
+        // Handle the error (e.g., log it)
+    }
+}

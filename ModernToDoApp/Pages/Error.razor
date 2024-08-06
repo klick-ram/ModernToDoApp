@@ -1,0 +1,20 @@
+﻿@page "/error"
+@inject NavigationManager Navigation
+@using Microsoft.AspNetCore.WebUtilities
+
+<h3>Something went wrong</h3>
+<p>@ErrorMessage</p>
+
+@code {
+    [Parameter]
+    public string ErrorMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("message", out var message))
+        {
+            ErrorMessage = message;
+        }
+    }
+}

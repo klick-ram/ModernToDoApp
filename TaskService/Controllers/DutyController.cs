@@ -2,7 +2,7 @@
 
 namespace UserTaskService.Controllers
 {
-    public class UserTaskController : Controller
+    public class DutyController : Controller
     {
         public IActionResult Index()
         {

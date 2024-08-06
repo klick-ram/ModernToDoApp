@@ -4,27 +4,27 @@ using SharedDAL.Models;
 
 namespace SharedDAL.Repositories
 {
-    public class UserTaskRepository : IUserTaskRepository
+    public class DutyRepository : IDutyRepository
     {
-        private readonly List<UserTask> _tasks = new List<UserTask>();
+        private readonly List<Duty> _tasks = new List<Duty>();
 
-        public async Task<IEnumerable<UserTask>> GetAllTasksAsync()
+        public async Task<IEnumerable<Duty>> GetAllTasksAsync()
         {
             return await Task.FromResult(_tasks);
         }
 
-        public async Task<UserTask> GetTaskByIdAsync(int id)
+        public async Task<Duty> GetTaskByIdAsync(int id)
         {
             return await Task.FromResult(_tasks.Find(t => t.Id == id));
         }
 
-        public async Task AddTaskAsync(UserTask task)
+        public async Task AddTaskAsync(Duty task)
         {
             _tasks.Add(task);
             await Task.CompletedTask;
         }
 
-        public async Task UpdateTaskAsync(UserTask task)
+        public async Task UpdateTaskAsync(Duty task)
         {
             var existingTask = _tasks.Find(t => t.Id == task.Id);
             if (existingTask != null)

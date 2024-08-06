@@ -1,5 +1,5 @@
 using SharedDAL.Repositories;
-namespace UserTaskService
+namespace DutyService
 {
     public class Program
     {
@@ -13,7 +13,7 @@ namespace UserTaskService
             
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddScoped<IUserTaskRepository, IUserTaskRepository>();
+            builder.Services.AddScoped<IDutyRepository, DutyRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

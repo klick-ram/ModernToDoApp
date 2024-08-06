@@ -31,6 +31,11 @@ public class Program
             navigationManager.NavigateTo($"/error?message={Uri.EscapeDataString(exception?.Message ?? "An error occurred")}");
         };
 
+        builder.Services.AddOidcAuthentication(options =>
+        {
+            builder.Configuration.Bind("Local", options.ProviderOptions);
+        });
+
         await builder.Build().RunAsync();
     }
 }

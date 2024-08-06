@@ -9,29 +9,43 @@ namespace SharedDAL.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public Task AddUserAsync(User user)
+        private readonly List<User> _users = new List<User>();
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(_users);
         }
 
-        public Task DeleteUserAsync(int id)
+        public async Task<User> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(_users.Find(u => u.Id == id));
         }
 
-        public Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task AddUserAsync(User user)
         {
-            throw new NotImplementedException();
+            _users.Add(user);
+            await Task.CompletedTask;
         }
 
-        public Task<User> GetUserByIdAsync(int id)
+        public async Task UpdateUserAsync(User user)
         {
-            throw new NotImplementedException();
+            var existingUser = _users.Find(u => u.Id == user.Id);
+            if (existingUser != null)
+            {
+                existingUser.Name = user.Name;
+                existingUser.Email = user.Email;
+            }
+            await Task.CompletedTask;
         }
 
-        public Task UpdateUserAsync(User user)
+        public async Task DeleteUserAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = _users.Find(u => u.Id == id);
+            if (user != null)
+            {
+                _users.Remove(user);
+            }
+            await Task.CompletedTask;
         }
     }
 }

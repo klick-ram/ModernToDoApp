@@ -9,10 +9,10 @@ namespace SharedDAL.Repositories
 {
     public interface IDutyRepository
     {
-        Task<IEnumerable<Duty>> GetAllTasksAsync();
-        Task<Duty> GetTaskByIdAsync(int id);
-        Task AddTaskAsync(Duty task);
-        Task UpdateTaskAsync(Duty task);
-        Task DeleteTaskAsync(int id);
+        Task<IEnumerable<Duty>> GetAllDutiesAsync();
+        Task<Duty> GetDutyByIdAsync(int id);
+        Task AddDutyAsync(Duty task);
+        Task UpdateDutyAsync(Duty task);
+        Task DeleteDutyAsync(int id);
     }
 }

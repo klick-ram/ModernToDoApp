@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharedDAL.Data;
 
@@ -10,9 +11,11 @@ using SharedDAL.Data;
 namespace ToDoItemService.Migrations
 {
     [DbContext(typeof(ToDoItemContext))]
-    partial class ToDoItemContextModelSnapshot : ModelSnapshot
+    [Migration("20240807120415_ToDoItems_ChangedDueDate_ToString")]
+    partial class ToDoItems_ChangedDueDate_ToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

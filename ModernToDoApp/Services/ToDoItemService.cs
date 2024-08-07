@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using SharedDAL.Models;
+using ModernToDoApp.Models;
 
 namespace ModernToDoApp.Services
 {
@@ -14,9 +14,17 @@ namespace ModernToDoApp.Services
             _httpClient = httpClientFactory.CreateClient("ToDoItemService");
         }
 
-        public async Task<ToDoItem[]> GetDutiesAsync()
+        public async Task<IEnumerable<ToDoItem>> GetToDoItemsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<ToDoItem[]>("api/duties");
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<IEnumerable<ToDoItem>>("api/ToDoItem/toDoList");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         public async Task<ToDoItem> GetToDoItemByIdAsync(int id)
@@ -24,9 +32,9 @@ namespace ModernToDoApp.Services
             return await _httpClient.GetFromJsonAsync<ToDoItem>($"api/duties/{id}");
         }
 
-        public async Task CreateToDoItemAsync(ToDoItem duty)
+        public async Task AddToDoItemAsync(ToDoItem item)
         {
-            await _httpClient.PostAsJsonAsync("api/duties", duty);
+            await _httpClient.PostAsJsonAsync("api/CreateToDoItem", item);
         }
 
         public async Task UpdateToDoItemAsync(ToDoItem duty)

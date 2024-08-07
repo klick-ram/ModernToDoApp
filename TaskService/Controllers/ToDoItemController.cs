@@ -15,7 +15,7 @@ namespace UserTaskService.Controllers
             _toDoItemRepository = toDoItemRepository;
         }
 
-        [HttpGet]
+        [HttpGet("toDoList")]
         public async Task<IEnumerable<ToDoItem>> GetToDoItemsAsync()
         {
             var toDoItems = await _toDoItemRepository.GetAllToDoItemsAsync();
@@ -34,7 +34,7 @@ namespace UserTaskService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddTask(ToDoItem task)
+        public async Task<ActionResult> CreateToDoItem(ToDoItem task)
         {
             await _toDoItemRepository.AddToDoItemAsync(task);
             return CreatedAtAction(nameof(GetTaskById), new { id = task.Id }, task);

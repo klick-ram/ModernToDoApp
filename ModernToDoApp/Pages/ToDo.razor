@@ -1,0 +1,51 @@
+﻿@page "/todo"
+@using Models
+@inject Services.ToDoItemService ToDoService
+
+<h3>ToDo List</h3>
+
+@if (toDoItems == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in toDoItems)
+        {
+            <li>
+                @item.Title - @item.Description
+                <button @onclick="() => EditToDoItem(item.Id)">Edit</button>
+                <button @onclick="() => DeleteToDoItem(item.Id)">Delete</button>
+            </li>
+        }
+    </ul>
+    <button @onclick="AddToDoItem">Add ToDo</button>
+}
+
+@code {
+    private IEnumerable<ToDoItem> toDoItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        toDoItems = await ToDoService.GetToDoItemsAsync();
+    }
+
+    private async Task AddToDoItem()
+    {
+        var newItem = new ToDoItem { Title = "New Task", Description = "Task Description" };
+        await ToDoService.AddToDoItemAsync(newItem);
+        toDoItems = await ToDoService.GetToDoItemsAsync();
+    }
+
+    private async Task EditToDoItem(int id)
+    {
+        // Navigate to edit page or open edit modal
+    }
+
+    private async Task DeleteToDoItem(int id)
+    {
+        await ToDoService.DeleteToDoItemAsync(id);
+        toDoItems = await ToDoService.GetToDoItemsAsync();
+    }
+}

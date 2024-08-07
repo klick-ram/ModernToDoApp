@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using SharedDAL.Data;
 using SharedDAL.Repositories;
 namespace ToDoItemService
 {
@@ -6,6 +9,10 @@ namespace ToDoItemService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<ToDoItemContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+            b => b.MigrationsAssembly("ToDoItemService")));
 
             // Add services to the container.
             builder.Services.AddScoped<IToDoItemRepository, ToDoItemRepository>();

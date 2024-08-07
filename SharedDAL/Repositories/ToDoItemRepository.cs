@@ -1,49 +1,49 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SharedDAL.Data;
 using SharedDAL.Models;
 
 namespace SharedDAL.Repositories
 {
     public class ToDoItemRepository : IToDoItemRepository
-    {
-        private readonly List<ToDoItem> _tasks = new List<ToDoItem>();
-
-        public async Task<IEnumerable<ToDoItem>> GetAllDutiesAsync()
+    {        
+        private readonly ToDoItemContext _context;
+        public ToDoItemRepository(ToDoItemContext context)
         {
-            return await Task.FromResult(_tasks);
+            _context = context;
+        }
+
+        public async Task<IEnumerable<ToDoItem>> GetAllToDoItemsAsync()
+        {
+            return await _context.ToDoItems.ToListAsync();
         }
 
         public async Task<ToDoItem> GetToDoItemByIdAsync(int id)
         {
-            return await Task.FromResult(_tasks.Find(t => t.Id == id));
+            return await _context.ToDoItems.FindAsync(id);
         }
 
         public async Task AddToDoItemAsync(ToDoItem task)
         {
-            _tasks.Add(task);
-            await Task.CompletedTask;
+            _context.ToDoItems.Add(task);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateToDoItemAsync(ToDoItem task)
         {
-            var existingTask = _tasks.Find(t => t.Id == task.Id);
-            if (existingTask != null)
-            {
-                existingTask.Title = task.Title;
-                existingTask.Description = task.Description;
-                existingTask.DueDate = task.DueDate;
-            }
-            await Task.CompletedTask;
+            _context.ToDoItems.Update(task);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteToDoItemAsync(int id)
         {
-            var task = _tasks.Find(t => t.Id == id);
+            var task = await _context.ToDoItems.FindAsync(id);
             if (task != null)
             {
-                _tasks.Remove(task);
+                _context.ToDoItems.Remove(task);
+                await _context.SaveChangesAsync();
             }
-            await Task.CompletedTask;
         }
     }
 }

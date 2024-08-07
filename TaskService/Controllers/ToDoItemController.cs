@@ -16,10 +16,10 @@ namespace UserTaskService.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ToDoItem>>> GetAllTasks()
+        public async Task<IEnumerable<ToDoItem>> GetToDoItemsAsync()
         {
-            var tasks = await _toDoItemRepository.GetAllDutiesAsync();
-            return Ok(tasks);
+            var toDoItems = await _toDoItemRepository.GetAllToDoItemsAsync();
+            return toDoItems;
         }
 
         [HttpGet("{id}")]

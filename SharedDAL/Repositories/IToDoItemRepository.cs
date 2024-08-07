@@ -9,7 +9,7 @@ namespace SharedDAL.Repositories
 {
     public interface IToDoItemRepository
     {
-        Task<IEnumerable<ToDoItem>> GetAllDutiesAsync();
+        Task<IEnumerable<ToDoItem>> GetAllToDoItemsAsync();
         Task<ToDoItem> GetToDoItemByIdAsync(int id);
         Task AddToDoItemAsync(ToDoItem task);
         Task UpdateToDoItemAsync(ToDoItem task);

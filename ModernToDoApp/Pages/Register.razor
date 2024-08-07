@@ -1,9 +1,10 @@
 ﻿@page "/register"
 @inject Services.UserService UserService
+@inject NavigationManager Navigation
 @using ModernToDoApp.Models
 
 <h3>Register</h3>
-@if (isRegistered)
+@if (error)
 {
     <div class="alert alert-success" role="alert">
         Registration successful! Welcome, @userRegistration.Username!
@@ -11,7 +12,7 @@
 }
 else
 {
-    <EditForm Model="userRegistration" OnValidSubmit="HandleValidSubmit">
+    <EditForm Model="userRegistration" OnValidSubmit="HandleRegister">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -30,22 +31,36 @@ else
         <div class="mt-3">
             <button type="submit" class="btn btn-primary">Register</button>
         </div>
-        
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger mt-3" role="alert">
+                Registration failed! @errorMessage
+            </div>
+        }
     </EditForm>
 }
 @code {
     private User userRegistration = new User();
-    private bool isRegistered = false;
-
-    private async Task HandleValidSubmit()
+    private string errorMessage = string.Empty;
+    private bool error = false;
+    private async Task HandleRegister()
     {
-        await UserService.CreateUserAsync(new SharedDAL.Models.User
-            {
-                Name = userRegistration.Username,
-                Password = userRegistration.Password,
-                Email = userRegistration.Email
-            });
+        var response = await UserService.CreateUserAsync(userRegistration);
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle successful registration (e.g., redirect to login page)
+            Navigation.NavigateTo("/login");
+        }
+        else
+        {
+            // Handle registration failure
+            var responeMessage = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Registration failed: {responeMessage}");
+            errorMessage = responeMessage;
+            error = false;
+        }
 
-        isRegistered = true;
     }
+
+
 }

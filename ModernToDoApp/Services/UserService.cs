@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using SharedDAL.Models;
+using ModernToDoApp.Models;
 
 namespace ModernToDoApp.Services
 {
@@ -19,19 +19,21 @@ namespace ModernToDoApp.Services
             return await _httpClient.GetFromJsonAsync<User[]>("api/users");
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<HttpResponseMessage> GetUserAsync(User user)
         {
-            return await _httpClient.GetFromJsonAsync<User>($"api/users/{id}");
+            //return await _httpClient.GetFromJsonAsync<User>($"api/auth/login", user);
+           return await _httpClient.PostAsJsonAsync($"api/auth/login", user);           
+
         }
 
-        public async Task CreateUserAsync(User user)
+        public async Task<HttpResponseMessage> CreateUserAsync(User user)
         {
-            await _httpClient.PostAsJsonAsync("api/user", user);
+            return await _httpClient.PostAsJsonAsync($"api/auth/register", user);
         }
 
         public async Task UpdateUserAsync(User user)
         {
-            await _httpClient.PutAsJsonAsync($"api/users/{user.Id}", user);
+            await _httpClient.PutAsJsonAsync($"api/users/{user.Username}", user);
         }
 
         public async Task DeleteUserAsync(int id)

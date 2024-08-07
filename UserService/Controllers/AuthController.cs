@@ -37,7 +37,7 @@ namespace UserService.Controllers
             return BadRequest(ModelState);
         }
 
-        //public async Task<IActionResult> Login([FromBody] UserModel model)
+        
         [HttpPost("login")]        
         public async Task<IActionResult> Login(UserModel model)
         {

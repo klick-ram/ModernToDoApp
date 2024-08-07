@@ -24,8 +24,7 @@
     private User loginModel = new User();
 
     private async Task HandleLogin()
-    {
-        //var response = await Http.PostAsJsonAsync("https://localhost:7049/api/auth/login", loginModel);
+    {        
         var response = await UserService.GetUserAsync(loginModel);
 
         if (response.IsSuccessStatusCode)

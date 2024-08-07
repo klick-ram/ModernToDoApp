@@ -5,36 +5,36 @@ using SharedDAL.Models;
 
 namespace ModernToDoApp.Services
 {
-    public class DutyService
+    public class ToDoItemService
     {
         private readonly HttpClient _httpClient;
 
-        public DutyService(IHttpClientFactory httpClientFactory)
+        public ToDoItemService(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClientFactory.CreateClient("DutyService");
+            _httpClient = httpClientFactory.CreateClient("ToDoItemService");
         }
 
-        public async Task<Duty[]> GetDutiesAsync()
+        public async Task<ToDoItem[]> GetDutiesAsync()
         {
-            return await _httpClient.GetFromJsonAsync<Duty[]>("api/duties");
+            return await _httpClient.GetFromJsonAsync<ToDoItem[]>("api/duties");
         }
 
-        public async Task<Duty> GetDutyByIdAsync(int id)
+        public async Task<ToDoItem> GetToDoItemByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<Duty>($"api/duties/{id}");
+            return await _httpClient.GetFromJsonAsync<ToDoItem>($"api/duties/{id}");
         }
 
-        public async Task CreateDutyAsync(Duty duty)
+        public async Task CreateToDoItemAsync(ToDoItem duty)
         {
             await _httpClient.PostAsJsonAsync("api/duties", duty);
         }
 
-        public async Task UpdateDutyAsync(Duty duty)
+        public async Task UpdateToDoItemAsync(ToDoItem duty)
         {
             await _httpClient.PutAsJsonAsync($"api/duties/{duty.Id}", duty);
         }
 
-        public async Task DeleteDutyAsync(int id)
+        public async Task DeleteToDoItemAsync(int id)
         {
             await _httpClient.DeleteAsync($"api/duties/{id}");
         }

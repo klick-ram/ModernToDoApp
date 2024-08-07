@@ -6,26 +6,26 @@ namespace UserTaskService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DutyController : ControllerBase
+    public class ToDoItemController : ControllerBase
     {
-        private readonly IDutyRepository _dutyRepository;
+        private readonly IToDoItemRepository _toDoItemRepository;
 
-        public DutyController(IDutyRepository dutyRepository)
+        public ToDoItemController(IToDoItemRepository toDoItemRepository)
         {
-            _dutyRepository = dutyRepository;
+            _toDoItemRepository = toDoItemRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Duty>>> GetAllTasks()
+        public async Task<ActionResult<IEnumerable<ToDoItem>>> GetAllTasks()
         {
-            var tasks = await _dutyRepository.GetAllDutiesAsync();
+            var tasks = await _toDoItemRepository.GetAllDutiesAsync();
             return Ok(tasks);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Duty>> GetTaskById(int id)
+        public async Task<ActionResult<ToDoItem>> GetTaskById(int id)
         {
-            var task = await _dutyRepository.GetDutyByIdAsync(id);
+            var task = await _toDoItemRepository.GetToDoItemByIdAsync(id);
             if (task == null)
             {
                 return NotFound();
@@ -34,28 +34,28 @@ namespace UserTaskService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddTask(Duty task)
+        public async Task<ActionResult> AddTask(ToDoItem task)
         {
-            await _dutyRepository.AddDutyAsync(task);
+            await _toDoItemRepository.AddToDoItemAsync(task);
             return CreatedAtAction(nameof(GetTaskById), new { id = task.Id }, task);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateTask(int id, Duty task)
+        public async Task<ActionResult> UpdateTask(int id, ToDoItem task)
         {
             if (id != task.Id)
             {
                 return BadRequest();
             }
 
-            await _dutyRepository.UpdateDutyAsync(task);
+            await _toDoItemRepository.UpdateToDoItemAsync(task);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTask(int id)
         {
-            await _dutyRepository.DeleteDutyAsync(id);
+            await _toDoItemRepository.DeleteToDoItemAsync(id);
             return NoContent();
         }
     }

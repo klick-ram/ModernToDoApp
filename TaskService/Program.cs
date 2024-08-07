@@ -1,5 +1,5 @@
 using SharedDAL.Repositories;
-namespace DutyService
+namespace ToDoItemService
 {
     public class Program
     {
@@ -8,7 +8,7 @@ namespace DutyService
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddScoped<IDutyRepository, DutyRepository>();
+            builder.Services.AddScoped<IToDoItemRepository, ToDoItemRepository>();
 
             builder.Services.AddControllers();
             

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernToDoApp.AppHost", "Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernToDoApp.ServiceDefaults", "ModernToDoApp.ServiceDefaults\ModernToDoApp.ServiceDefaults.csproj", "{E5E93B0A-FB30-4CA9-B3D6-1D96BFB5A897}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DutyService", "TaskService\DutyService.csproj", "{5CD39E8C-869C-4B68-9B64-827A0683DA4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoItemService", "TaskService\ToDoItemService.csproj", "{5CD39E8C-869C-4B68-9B64-827A0683DA4D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\UserService.csproj", "{5CDF091D-2CCC-42D0-B2DB-02D78E3B6897}"
 EndProject

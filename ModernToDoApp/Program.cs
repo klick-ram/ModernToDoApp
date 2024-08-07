@@ -14,12 +14,12 @@ public class Program
 
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddScoped<Services.UserService>();
-        builder.Services.AddScoped<Services.DutyService>();
+        builder.Services.AddScoped<Services.ToDoItemService>();
         builder.Services.AddScoped<Services.NotificationService>();
 
         // Register HTTP clients for each microservice
         builder.Services.AddHttpClient("UserService", client => client.BaseAddress = new Uri("https://localhost:7049/"));
-        builder.Services.AddHttpClient("DutyService", client => client.BaseAddress = new Uri("https://localhost:7039/"));
+        builder.Services.AddHttpClient("ToDoItemService", client => client.BaseAddress = new Uri("https://localhost:7039/"));
         builder.Services.AddHttpClient("NotificationService", client => client.BaseAddress = new Uri("https://localhost:7224/"));
 
         // Global exception handling
